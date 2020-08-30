@@ -3,6 +3,7 @@ import Navi from "./components/Navi";
 import CategoryList from "./components/CategoryList";
 import ProductList from "./components/ProductList";
 import { Container, Row, Col } from "reactstrap";
+import alertify from "alertifyjs";
 
 // json-server --watch db.json
 
@@ -41,6 +42,13 @@ export default class App extends Component {
       newCart.push({ product: product, quantity: 1 });
     }
     this.setState({ cart: newCart });
+    alertify.success(product.productName + " is added.", 2);
+  };
+
+  removeFromCart = (product) => {
+    let newCart = this.state.cart.filter((x) => x.product.id !== product.id);
+    this.setState({ cart: newCart });
+    alertify.error(product.productName + " is removed.", 2);
   };
 
   render() {
@@ -49,7 +57,7 @@ export default class App extends Component {
     return (
       <div>
         <Container>
-          <Navi cart={this.state.cart} />
+          <Navi cart={this.state.cart} removeFromCart={this.removeFromCart} />
           <Row>
             <Col xs="3">
               <CategoryList
