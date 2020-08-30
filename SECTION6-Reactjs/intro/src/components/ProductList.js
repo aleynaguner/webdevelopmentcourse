@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Table } from "reactstrap";
+import { Table, Button } from "reactstrap";
 
 export default class ProductList extends Component {
   //constructor'a gerek olmadan kullanabiliyoruz.
@@ -17,6 +17,7 @@ export default class ProductList extends Component {
               <th>Quantity for Per Unit</th>
               <th>Unit Price</th>
               <th>Units In Stock</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -27,6 +28,15 @@ export default class ProductList extends Component {
                 <td>{product.quantityPerUnit}</td>
                 <td>{product.unitPrice}</td>
                 <td>{product.unitsInStock}</td>
+                <td>
+                  <Button
+                    onClick={() => this.props.addToCart(product)}
+                    color="info"
+                    title="Add to Cart"
+                  >
+                    Add
+                  </Button>
+                </td>
               </tr>
             ))}
           </tbody>
