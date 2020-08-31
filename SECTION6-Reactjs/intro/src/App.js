@@ -4,6 +4,10 @@ import CategoryList from "./components/CategoryList";
 import ProductList from "./components/ProductList";
 import { Container, Row, Col } from "reactstrap";
 import alertify from "alertifyjs";
+import { Switch, Route } from "react-router-dom";
+import NotFound from "./components/NotFound";
+import CartList from "./components/CartList";
+// import Form from "./components/Form";
 
 // json-server --watch db.json
 
@@ -67,16 +71,42 @@ export default class App extends Component {
               />
             </Col>
             <Col xs="8">
-              <ProductList
-                getProducts={this.getProducts}
-                addToCart={this.addToCart}
-                products={this.state.products}
-                currentCategory={this.state.currentCategory}
-                info={infoProduct}
-              />
+              {/* Switch routelar arası geziyor
+                  Parametre ile göndermek istediğimiz component var ise render ile yapıyoruz */}
+              <Switch>
+                <Route
+                  exact
+                  path="/"
+                  render={(props) => (
+                    <ProductList
+                      {...props}
+                      getProducts={this.getProducts}
+                      addToCart={this.addToCart}
+                      products={this.state.products}
+                      currentCategory={this.state.currentCategory}
+                      info={infoProduct}
+                    />
+                  )}
+                />
+                <Route
+                  exact
+                  path="/cart"
+                  render={(props) => (
+                    <CartList
+                      {...props}
+                      cart={this.state.cart}
+                      removeFromCart={this.removeFromCart}
+                    />
+                  )}
+                />
+                <Route component={NotFound} />
+              </Switch>
             </Col>
             <Col xs="1"></Col>
           </Row>
+          {/* <Row>
+            <Form/>
+          </Row> */}
         </Container>
       </div>
     );

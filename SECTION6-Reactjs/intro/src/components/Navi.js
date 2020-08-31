@@ -12,7 +12,10 @@ export default class Navi extends Component {
             <NavItem>
               <NavLink href="/products/">Products</NavLink>
             </NavItem>
-            <CartSummary cart={this.props.cart} removeFromCart={this.props.removeFromCart}></CartSummary>
+            <CartSummary
+              cart={this.props.cart}
+              removeFromCart={this.props.removeFromCart}
+            ></CartSummary>
           </Nav>
         </Navbar>
       </div>
