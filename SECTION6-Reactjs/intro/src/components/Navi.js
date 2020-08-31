@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CartSummary from "./CartSummary";
 import { Nav, NavItem, NavLink, Navbar, NavbarBrand } from "reactstrap";
+import { Link } from "react-router-dom";
 
 export default class Navi extends Component {
   render() {
@@ -10,7 +11,9 @@ export default class Navi extends Component {
           <NavbarBrand href="/">Nortwind App</NavbarBrand>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink href="/products/">Products</NavLink>
+              <NavLink>
+                <Link to="form">Form</Link>
+              </NavLink>
             </NavItem>
             <CartSummary
               cart={this.props.cart}

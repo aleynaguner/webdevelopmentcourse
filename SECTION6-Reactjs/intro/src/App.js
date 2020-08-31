@@ -7,7 +7,7 @@ import alertify from "alertifyjs";
 import { Switch, Route } from "react-router-dom";
 import NotFound from "./components/NotFound";
 import CartList from "./components/CartList";
-// import Form from "./components/Form";
+import FormDemo from "./components/FormDemo";
 
 // json-server --watch db.json
 
@@ -99,14 +99,12 @@ export default class App extends Component {
                     />
                   )}
                 />
+                <Route path="/form" component={FormDemo}></Route>
                 <Route component={NotFound} />
               </Switch>
             </Col>
             <Col xs="1"></Col>
           </Row>
-          {/* <Row>
-            <Form/>
-          </Row> */}
         </Container>
       </div>
     );
