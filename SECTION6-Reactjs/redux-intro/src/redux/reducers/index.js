@@ -1,7 +1,7 @@
-import { conbineReducer } from "redux";
+import { combineReducers } from 'redux';
 import counterReducer from "./counterReducer";
 
-const reducers = conbineReducer({
+const reducers = combineReducers({
   counterReducer,
   //counterReducer:counterReducer ikiside aynı
 });

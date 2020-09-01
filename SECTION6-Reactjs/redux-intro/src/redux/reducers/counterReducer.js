@@ -13,7 +13,7 @@ const counterReducer = (state = 0, action) => {
       return (newState = state + action.payload);
 
     default:
-      break;
+      return state;
   }
 };
 
