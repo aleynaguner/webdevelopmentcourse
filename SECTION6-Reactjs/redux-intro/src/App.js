@@ -34,6 +34,9 @@ function App() {
           <Col xs="4">
             <DecreaseCounter />
           </Col>
+          <Col xs="4">
+            <IncreaseByTwoCounter />
+          </Col>
         </Row>
       </Container>
     </div>
