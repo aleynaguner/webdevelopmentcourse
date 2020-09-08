@@ -1,1 +1,0 @@
-Redux mantığını anlamak için counter örneği.
