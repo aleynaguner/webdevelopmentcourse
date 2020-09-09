@@ -38,6 +38,17 @@ function App() {
             <IncreaseByTwoCounter />
           </Col>
         </Row>
+        <Row>
+          <Col xs="4">
+            <IncreaseCounter />
+          </Col>
+          <Col xs="4">
+            <DecreaseCounter />
+          </Col>
+          <Col xs="4">
+            <IncreaseByTwoCounter />
+          </Col>
+        </Row>
       </Container>
     </div>
   );
