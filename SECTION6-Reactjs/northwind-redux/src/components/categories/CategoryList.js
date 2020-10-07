@@ -2,15 +2,25 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as categoryActions from "../../redux/actions/categoryActions";
+import { ListGroup, ListGroupItem} from "reactstrap";
 
 class CategoryList extends Component {
-  // componentDidMount(){
-
-  // }
+  componentDidMount(){
+    this.props.actions.getCategories()
+  }
   render() {
     return (
       <div>
-        <h3>CategoryList :</h3>
+        <h3>CategoryList</h3>
+        <ListGroup>
+          {
+            this.props.categories.map(category => (
+              <ListGroupItem key={category.id}>
+                {category.categoryName}
+              </ListGroupItem>
+            ))
+          }
+        </ListGroup>
         <h5>Seçili kategori: {this.props.currentCategory.categoryName}</h5>
       </div>
     );
