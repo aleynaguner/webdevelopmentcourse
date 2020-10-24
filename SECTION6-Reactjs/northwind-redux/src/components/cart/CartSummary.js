@@ -10,7 +10,7 @@ import {
 } from "reactstrap";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import * as categoryActions from "../../redux/actions/categoryActions";
+import * as cartActions from "../../redux/actions/cartActions";
 
 class CartSummary extends Component {
   constructor(props) {
@@ -33,11 +33,12 @@ class CartSummary extends Component {
         </DropdownToggle>
         <DropdownMenu right>
         <DropdownItem header>Cart Summary</DropdownItem>
+        <DropdownItem divider />
           {this.props.cart.map((cartItem) => (
             <DropdownItem key={cartItem.product.id}>
               <Badge color="success" className="ml-1">+</Badge>
               <Badge color="warning" className="ml-1">{cartItem.quantity}</Badge>
-              <Badge color="danger" className="ml-1">-</Badge>
+              <Badge color="danger" className="ml-1" onClick={() => this.props.actions.removeFromCart(cartItem.product)}>-</Badge>
               <p>{cartItem.product.productName}</p>
             </DropdownItem>
           ))}
@@ -63,4 +64,12 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(CartSummary);
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: {
+      removeFromCart: bindActionCreators(cartActions.removeFromCart, dispatch),
+    },
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartSummary);
