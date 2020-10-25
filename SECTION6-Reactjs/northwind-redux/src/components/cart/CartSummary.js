@@ -11,10 +11,13 @@ import {
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as cartActions from "../../redux/actions/cartActions";
+import { Link } from "react-router-dom";
+import alertify from "alertifyjs";
 
 class CartSummary extends Component {
-  constructor(props) {
-    super(props);
+  removeFromCart(product) {
+    this.props.actions.removeFromCart(product);
+    alertify.error(product.productName + " added to cart");
   }
 
   renderEmpty() {
@@ -32,18 +35,32 @@ class CartSummary extends Component {
           Cart
         </DropdownToggle>
         <DropdownMenu right>
-        <DropdownItem header>Cart Summary</DropdownItem>
-        <DropdownItem divider />
+          <DropdownItem header>Cart Summary</DropdownItem>
+          <DropdownItem divider />
           {this.props.cart.map((cartItem) => (
             <DropdownItem key={cartItem.product.id}>
-              <Badge color="success" className="ml-1">+</Badge>
-              <Badge color="warning" className="ml-1">{cartItem.quantity}</Badge>
-              <Badge color="danger" className="ml-1" onClick={() => this.props.actions.removeFromCart(cartItem.product)}>-</Badge>
+              <Badge color="success" className="ml-1">
+                +
+              </Badge>
+              <Badge color="warning" className="ml-1">
+                {cartItem.quantity}
+              </Badge>
+              <Badge
+                color="danger"
+                className="ml-1"
+                onClick={() =>
+                  this.props.actions.removeFromCart(cartItem.product)
+                }
+              >
+                -
+              </Badge>
               <p>{cartItem.product.productName}</p>
             </DropdownItem>
           ))}
           <DropdownItem divider />
-          <DropdownItem>To Cart</DropdownItem>
+          <DropdownItem>
+            <Link to={"/cart"}>To Cart</Link>
+          </DropdownItem>
         </DropdownMenu>
       </UncontrolledDropdown>
     );
