@@ -31,6 +31,7 @@ class ProductList extends Component {
             <tr>
               <th>Id</th>
               <th>Product Name</th>
+              <th>Unit Price</th>
               <th>Quantity for Per Unit</th>
               <th>Units In Stock</th>
               <th></th>
@@ -40,7 +41,8 @@ class ProductList extends Component {
             {this.props.products.map((product) => (
               <tr key={product.id}>
                 <th scope="row">{product.id}</th>
-                <td><Link to={"/saveProduct" + product.id}>{product.productName}</Link></td>
+                <td><Link to={"/saveProduct/" + product.id}>{product.productName}</Link></td>
+                <td>{product.unitPrice}</td>
                 <td>{product.quantityPerUnit}</td>
                 <td>{product.unitsInStock}</td>
                 <td>

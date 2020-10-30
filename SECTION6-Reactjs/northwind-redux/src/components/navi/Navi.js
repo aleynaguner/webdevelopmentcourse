@@ -9,6 +9,7 @@ import {
   NavLink,
 } from "reactstrap";
 import CartSummary from "../cart/CartSummary";
+import { Link } from "react-router-dom";
 
 const Navi = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,12 +19,12 @@ const Navi = (props) => {
   return (
     <div>
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">Northwind-Redux</NavbarBrand>
+        <NavbarBrand><Link to="/">Northwind-Redux</Link></NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink href="/components/">Components</NavLink>
+              <NavLink><Link to="/saveProduct">Add New Product</Link></NavLink>
             </NavItem>
             <CartSummary />
           </Nav>
