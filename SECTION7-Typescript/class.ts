@@ -24,7 +24,16 @@ class Person {
   save() {
     console.log("Person is saved !!!");
   }
-  private name: string;
+  private _name: string;
+
+  //encapsulation
+  get name(): string {
+    return this._name;
+  }
+
+  set name(setName: string) {
+    this._name = setName;
+  }
   protected surname: string;
 }
 
@@ -47,3 +56,8 @@ customer.toSell();
 let staff = new Staff();
 staff.save();
 staff.payment();
+
+let person = new Person();
+person.name = "Aleyna";
+console.log(person.name);
+person.save();
