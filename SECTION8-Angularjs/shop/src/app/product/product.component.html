@@ -1,0 +1,24 @@
+<h3 *ngIf="products; else noProduct">{{ title }}</h3>
+<div class="row">
+  <ng-template #noProduct>
+    <div class="alert alert-primary" role="alert">
+      There is no product in this category !!!
+    </div>
+  </ng-template>
+  <div *ngFor="let product of products" class="card" style="width: 18rem">
+    <img
+      src="{{ product.imageURL }}"
+      class="card-img-top"
+      alt="..."
+      height="400px"
+    />
+    <div class="card-body">
+      <h5 class="card-title">{{ product.productName | uppercase }}</h5>
+      <p class="card-text">
+        {{ product.description }}
+        <br />
+        {{ product.price | currency }}
+      </p>
+    </div>
+  </div>
+</div>
