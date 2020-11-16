@@ -1,0 +1,11 @@
+//use existing pipes
+product.price | currency 
+
+//creates new pipe
+ng g pipe (pipeName)
+
+//for two way binding
+[(ngModel)]="filterText"
+
+//after add a new package go angular.json file and import in scripts
+

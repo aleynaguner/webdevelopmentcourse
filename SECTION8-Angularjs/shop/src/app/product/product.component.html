@@ -1,11 +1,26 @@
 <h3 *ngIf="products; else noProduct">{{ title }}</h3>
+<div class="form-group">
+  <input
+    class="form-control"
+    id="productName"
+    placeholder="Search..."
+    [(ngModel)]="filterText"
+  />
+  <small *ngIf="filterText" class="form-text text-muted">
+    You're searching <strong>{{ filterText }}</strong></small
+  >
+</div>
 <div class="row">
   <ng-template #noProduct>
     <div class="alert alert-primary" role="alert">
       There is no product in this category !!!
     </div>
   </ng-template>
-  <div *ngFor="let product of products" class="card" style="width: 18rem">
+  <div
+    *ngFor="let product of products | productFilter: filterText"
+    class="card"
+    style="width: 18rem"
+  >
     <img
       src="{{ product.imageURL }}"
       class="card-img-top"
@@ -19,6 +34,7 @@
         <br />
         {{ product.price | currency }}
       </p>
+      <a (click)="addToCart(product)" class="btn btn-primary">Add to Cart</a>
     </div>
   </div>
 </div>
