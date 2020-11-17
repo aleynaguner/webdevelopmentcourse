@@ -9,3 +9,13 @@ ng g pipe (pipeName)
 
 //after add a new package go angular.json file and import in scripts
 
+//creates a service
+ng g service (serviceName)
+
+//explains that this is a servive for all app
+@Injectable({
+  providedIn: 'root', 
+})
+
+//You can add the service to providers in app.module.ts 
+//both works
