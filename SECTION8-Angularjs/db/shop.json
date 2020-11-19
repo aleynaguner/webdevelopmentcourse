@@ -1,0 +1,27 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "productName": "Laptop",
+      "price": 5000,
+      "categoryId": 1,
+      "description": "Asus ZenBook",
+      "imageURL": "https://cdn.dsmcdn.com/mnresize/415/525/ty9/product/media/images/20200826/14/8756701/82628672/1/1_org_zoom.jpg"
+    },
+    {
+      "id": 2,
+      "productName": "Mouse",
+      "price": 150,
+      "categoryId": 2,
+      "description": "Logitech M330",
+      "imageURL": "https://cdn.dsmcdn.com/mnresize/415/525/ty9/product/media/images/20200826/14/8756701/82628672/1/1_org_zoom.jpg"
+    }
+  ],
+  "categories": [
+    { "id": 1, "categoryName": "Computer" },
+    { "id": 2, "categoryName": "Accessories" },
+    { "id": 3, "categoryName": "Music" },
+    { "id": 4, "categoryName": "Phone" },
+    { "id": 5, "categoryName": "Electronical" }
+  ]
+}
