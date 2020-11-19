@@ -1,83 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from './product';
 import { AlertifyService } from '../services/alertify.service';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css'],
+  providers: [ProductService],
 })
 export class ProductComponent implements OnInit {
-  constructor(private alertifyService: AlertifyService) {}
+  constructor(private alertifyService: AlertifyService, private productService:ProductService) {}
   title = 'Product List';
   filterText = '';
-  products: Product[] = [
-    {
-      id: 1,
-      productName: 'Laptop',
-      price: 5000,
-      categoryId: 1,
-      description: 'Asus ZenBook',
-      imageURL:
-        'https://cdn.dsmcdn.com/mnresize/415/525/ty9/product/media/images/20200826/14/8756701/82628672/1/1_org_zoom.jpg',
-    },
-    {
-      id: 1,
-      productName: 'Mouse',
-      price: 150,
-      categoryId: 2,
-      description: 'Logitech M330',
-      imageURL:
-        'https://cdn.dsmcdn.com/mnresize/415/525/ty9/product/media/images/20200826/14/8756701/82628672/1/1_org_zoom.jpg',
-    },
-    {
-      id: 1,
-      productName: 'Mouse',
-      price: 150,
-      categoryId: 2,
-      description: 'Logitech M330',
-      imageURL:
-        'https://cdn.dsmcdn.com/mnresize/415/525/ty9/product/media/images/20200826/14/8756701/82628672/1/1_org_zoom.jpg',
-    },
-    {
-      id: 1,
-      productName: 'Laptop',
-      price: 5000,
-      categoryId: 1,
-      description: 'Asus ZenBook',
-      imageURL:
-        'https://cdn.dsmcdn.com/mnresize/415/525/ty9/product/media/images/20200826/14/8756701/82628672/1/1_org_zoom.jpg',
-    },
-    {
-      id: 1,
-      productName: 'Laptop',
-      price: 5000,
-      categoryId: 1,
-      description: 'Asus ZenBook',
-      imageURL:
-        'https://cdn.dsmcdn.com/mnresize/415/525/ty9/product/media/images/20200826/14/8756701/82628672/1/1_org_zoom.jpg',
-    },
-    {
-      id: 1,
-      productName: 'Mouse',
-      price: 150,
-      categoryId: 2,
-      description: 'Logitech M330',
-      imageURL:
-        'https://cdn.dsmcdn.com/mnresize/415/525/ty9/product/media/images/20200826/14/8756701/82628672/1/1_org_zoom.jpg',
-    },
-    {
-      id: 1,
-      productName: 'Mouse',
-      price: 150,
-      categoryId: 2,
-      description: 'Logitech M330',
-      imageURL:
-        'https://cdn.dsmcdn.com/mnresize/415/525/ty9/product/media/images/20200826/14/8756701/82628672/1/1_org_zoom.jpg',
-    },
-  ];
+  products: Product[];
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.productService.getProducts().subscribe(data =>{
+      this.products = data
+    })
+  }
 
   addToCart(product) {
     this.alertifyService.success(product.productName + ' is added to cart!!');
