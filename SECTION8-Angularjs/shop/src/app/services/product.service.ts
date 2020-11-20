@@ -10,8 +10,14 @@ export class ProductService {
 
   path = 'http://localhost:3000/products';
 
-  getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.path).pipe(
+  getProducts(categoryId): Observable<Product[]> {
+    let newPath = this.path;
+    if (categoryId) {
+      newPath = newPath + '?categoryId=' + categoryId;
+    }
+
+    console.log(categoryId);
+    return this.http.get<Product[]>(newPath).pipe(
       tap((data) => console.log(JSON.stringify(data))),
       catchError(this.handleError)
     );
