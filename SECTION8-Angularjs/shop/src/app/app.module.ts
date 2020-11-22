@@ -10,7 +10,6 @@ import { ProductComponent } from './product/product.component';
 import { ProductFilterPipe } from './product/product-filter.pipe';
 import { AlertifyService } from './services/alertify.service';
 import { HttpClientModule } from '@angular/common/http';
-import { NotfoundComponent } from './notfound/notfound.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +18,6 @@ import { NotfoundComponent } from './notfound/notfound.component';
     CategoryComponent,
     ProductComponent,
     ProductFilterPipe,
-    NotfoundComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [AlertifyService],
