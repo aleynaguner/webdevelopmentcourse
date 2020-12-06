@@ -1,3 +1,15 @@
+ng new (projectName)
+
+ng serve --open 
+// open in browser
+
+ng g component (componentName)
+// creates basic component with basic files
+
+templateUrl: './product.component.html',
+template: `<p>This is a component with inline html template , {{name}} !!!</p>`,
+// have two way for html templates but always prefer the file format templateURL
+
 //use existing pipes
 product.price | currency 
 
