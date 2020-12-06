@@ -1,0 +1,85 @@
+<p>product-add-forms1 works!</p>
+<h3>Add new product</h3>
+<form #productAddForm="ngForm" (ngsubmit)="add(productAddForm)">
+  <div class="form-group">
+    <input
+      type="text"
+      placeholder="Add Product"
+      #productName="ngModel"
+      [(ngModel)]="model.productName"
+      class="form-control"
+      name="productName"
+      id="productName"
+      required
+    />
+    <div
+      *ngIf="productName.invalid && productName.dirty"
+      class="alert alert-danger"
+    >
+      Product Name can not be empty.
+    </div>
+    <input
+      type="text"
+      placeholder="Description"
+      #name="ngModel"
+      [(ngModel)]="model.description"
+      class="form-control"
+      name="description"
+      id="description"
+      required
+    />
+    <div
+      *ngIf="description.invalid && description.dirty"
+      class="alert alert-danger"
+    >
+      Description can not be empty.
+    </div>
+    <input
+      type="text"
+      placeholder="Image URL"
+      #imageURL="ngModel"
+      [(ngModel)]="model.imageURL"
+      class="form-control"
+      name="imageURL"
+      id="imageURL"
+      required
+    />
+    <div *ngIf="imageURL.invalid && imageURL.dirty" class="alert alert-danger">
+      ImageURL can not be empty.
+    </div>
+    <input
+      type="text"
+      placeholder="Price"
+      #price="ngModel"
+      [(ngModel)]="model.price"
+      class="form-control"
+      name="price"
+      id="price"
+      required
+    />
+    <div *ngIf="price.invalid && price.dirty" class="alert alert-danger">
+      Price can not be empty.
+    </div>
+    <div class="form-group">
+      <select
+        #categoryId="ngModel"
+        [(ngModel)]="model.categoryId"
+        required
+        id="categoryId"
+        name="categoryId"
+        class="form-control"
+      >
+        <option
+          *ngFor="let category of categories"
+          [value]="category.id"
+        >{{category.name}}</option>
+      </select>
+      <div
+        *ngIf="categoryId.invalid && categoryId.touched"
+        class="alert alert-danger"
+      >
+        Category must be choose.
+      </div>
+    </div>
+  </div>
+</form>
