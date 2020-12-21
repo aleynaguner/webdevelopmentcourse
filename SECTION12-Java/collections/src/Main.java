@@ -35,6 +35,6 @@ public class Main {
         dictionary.put("computer","bilgisayar");
 
         System.out.println(dictionary.get("computer"));
-        
+
     }
 }
